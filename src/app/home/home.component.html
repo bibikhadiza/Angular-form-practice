@@ -1,6 +1,6 @@
 <div class="container">
   <h3>Angular Forms</h3>
-  <form #form="ngForm" novalidate>
+  <form #form="ngForm" (submit)="submitForm(form)" novalidate>
 
     <div class="form-group" [class.has-error]="firstName.invalid">
       <label class="control-label">First Name</label>
@@ -10,7 +10,8 @@
 
     <div class="form-group">
       <label>Last Name</label>
-      <input type="text" class="form-control" placeholder="Name" name="lastName" [(ngModel)]="model.lastName">
+      <input type="text" class="form-control" placeholder="Name" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required>
+      <div class="alert alert-danger" *ngIf="lastName.invalid">First name is Required</div>
     </div>
 
      <div class="checkbox">
