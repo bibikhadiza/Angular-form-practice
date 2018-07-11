@@ -8,12 +8,14 @@ import { Employee } from '../models/employee.model';
 })
 export class HomeComponent {
   languages = [ 'english', 'spanish', 'french'];
-  model = new Employee('Darla', 'smith', true, "W2", "english");
+  model = new Employee('Darla', 'smith', true, "W2", "default");
+  hasPrimaryLanguageError = false;
 
-  // firstNameToUpperCase(value: string) {
-  //   if (value.length > 0)
-  //     this.model.firstName = value.charAt(0).toUpperCase() + value.slice(1);
-  //   else
-  //     this.model.firstName = value;
-  // }
+  validatePrimaryLanguage(event){
+    console.log("lang:", this.model.primaryLanguage)
+    if (event === 'default')
+      this.hasPrimaryLanguageError = true;
+    else
+      this.hasPrimaryLanguageError = false;
+  }
 }
