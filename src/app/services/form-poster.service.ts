@@ -21,12 +21,14 @@ export class FormPoster {
 
   }
 
-  extractData() {
-
+  extractData(res: Response) {
+    let body = res.json();
+    return body.feilds || { };
   }
 
-  handleError(){
-
+  handleError(error: any){
+    console.log('post error: ', error)
+    return Observable.throw(error.statusText);
   }
 
 }
